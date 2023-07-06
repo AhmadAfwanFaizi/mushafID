@@ -1,0 +1,42 @@
+.card-last_read {
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      rgb(0 190 193) 10px
+    ),
+    repeating-linear-gradient(#13bbaf, #82cbb2);
+}
+
+.card-quran {
+}
+.card-tajwid {
+}
+.card-memorize {
+}
+.card-bookmark {
+}
+.icon-menu_header {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.icon-menu {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.icon-last_read {
+  background-image: url("/src/assets/icons/lantern.png");
+}
+.icon-quran {
+  background-image: url("/src/assets/icons/quran.png");
+}
+.icon-tajwid {
+  background-image: url("/src/assets/icons/tajwid.png");
+}
+.icon-memorize {
+  background-image: url("/src/assets/icons/memorize.png");
+}
+.icon-bookmark {
+  background-image: url("/src/assets/icons/bookmark.png");
+}

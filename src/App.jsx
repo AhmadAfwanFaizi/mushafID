@@ -1,13 +1,15 @@
 import "./App.css";
 
 import Navbar from "./components/Navbar";
+import Home from "./pages/home";
 
 function App() {
   return (
     <div className="container mx-auto flex justify-center">
-      <dic className="w-full lg:w-1/2">
+      <div className="app w-screen min-h-max lg:w-1/2">
         <Navbar />
-      </dic>
+        <Home />
+      </div>
     </div>
   );
 }
