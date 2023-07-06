@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <div className="flex justify-between p-4 text-2xl">
+    <div className="flex justify-between py-4 text-2xl">
       <div className="left">
         <button className="btn btn-ghost">
           <svg

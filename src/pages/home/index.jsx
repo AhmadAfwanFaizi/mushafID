@@ -43,7 +43,7 @@ const page = () => {
             <div>
               <h2 className="card-title">Quran</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover flex">
+              <a href="/quran" className="link link-hover flex">
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

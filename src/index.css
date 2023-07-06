@@ -4,7 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "noorehidayat";
+  src: url("/src/assets/font/noorehidayat.ttf");
+}
+
 :root {
   font-family: "Poppins", sans-serif;
   color: whitesmoke;
+}
+
+.arabic {
+  font-family: "noorehidayat";
 }
