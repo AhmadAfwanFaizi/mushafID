@@ -12,9 +12,22 @@ const page = () => {
                 <h2 className="card-title">Terakhir Dibaca</h2>
                 <p>Al Fatihah : 4</p>
                 <div className="card-actions justify-end"></div>
-                <a href="" className="link link-hover">
+                <a href="" className="link link-hover flex">
                   Mulai
-                  <i className="bi bi-chevron-right ml-2"></i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
                 </a>
               </div>
               <div className="col-span-1 icon-menu_header icon-last_read h-24"></div>
@@ -30,9 +43,22 @@ const page = () => {
             <div>
               <h2 className="card-title">Quran</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover">
+              <a href="" className="link link-hover flex">
                 Mulai
-                <i className="bi bi-chevron-right ml-2"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </a>
             </div>
           </div>
@@ -43,9 +69,22 @@ const page = () => {
             <div>
               <h2 className="card-title">Tajwid</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover">
+              <a href="" className="link link-hover flex">
                 Mulai
-                <i className="bi bi-chevron-right ml-2"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </a>
             </div>
           </div>
@@ -59,9 +98,22 @@ const page = () => {
             <div>
               <h2 className="card-title">Hafalan</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover">
+              <a href="" className="link link-hover flex">
                 Mulai
-                <i className="bi bi-chevron-right ml-2"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </a>
             </div>
           </div>
@@ -72,9 +124,22 @@ const page = () => {
             <div>
               <h2 className="card-title">Penanda</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover">
+              <a href="" className="link link-hover flex">
                 Mulai
-                <i className="bi bi-chevron-right ml-2"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </a>
             </div>
           </div>
