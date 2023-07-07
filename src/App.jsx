@@ -14,6 +14,12 @@ const router = createBrowserRouter([
   {
     path: "/quran",
     element: <Quran />,
+    children: [
+      {
+        path: "/quran/:surahId",
+        element: <Quran />,
+      },
+    ],
   },
 ]);
 
