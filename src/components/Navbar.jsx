@@ -1,6 +1,9 @@
 const Navbar = () => {
   return (
-    <div className="flex justify-between py-4 text-2xl">
+    <div
+      className="fixed top-0 bg-blue-400 z-10 flex justify-between py-4 text-2xl"
+      style={{ width: "inherit" }}
+    >
       <div className="left">
         <a href="/quran" className="btn btn-ghost">
           <svg

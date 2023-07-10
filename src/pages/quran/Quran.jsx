@@ -33,9 +33,12 @@ const Quran = () => {
   // return console.log(surahId, surah.length, loading);
 
   return (
-    <div className="min-h-screen px-4">
-      <div className="search pb-4">
-        <label className="relative block">
+    <>
+      <div
+        className="search py-4 fixed top-20 bg-blue-400 z-10 flex justify-around"
+        style={{ width: "inherit" }}
+      >
+        <label className="relative block w-11/12">
           <input
             type="text"
             placeholder=""
@@ -59,7 +62,8 @@ const Quran = () => {
           </span>
         </label>
       </div>
-      <div className="surah">
+
+      <div className="surah min-h-screen px-4 mt-40">
         <div className="overflow-x-auto">
           <table className="table text-slate-600">
             <tbody>
@@ -163,7 +167,7 @@ const Quran = () => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
