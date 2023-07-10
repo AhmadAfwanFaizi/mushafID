@@ -3,7 +3,7 @@ import "./style.css";
 
 const page = () => {
   return (
-    <div className="px-6 py-2 grid grid-cols-2 gap-6">
+    <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
         <div className="card card-last_read w-ful bg-base-100 shadow-xl">
           <div className="card-body">

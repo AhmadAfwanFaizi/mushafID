@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div
@@ -5,7 +6,7 @@ const Navbar = () => {
       style={{ width: "inherit" }}
     >
       <div className="left">
-        <a href="/quran" className="btn btn-ghost">
+        <Link to="/quran" className="btn btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -20,7 +21,7 @@ const Navbar = () => {
               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
             />
           </svg>
-        </a>
+        </Link>
       </div>
       <div className="center m-auto">
         <h1>MyQuran</h1>
