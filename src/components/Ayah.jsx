@@ -15,7 +15,7 @@ const Ayah = ({ ayah }) => {
     <>
       <div className="media flex justify-between items-center h-10 bg-slate-100 rounded-full">
         <div className="media-left flex items-center content-around pl-2">
-          <div className="bg-dark-teal text-slate-100 w-6 h-6 rounded-full flex justify-center items-center">
+          <div className="bg-topaz text-slate-100 w-6 h-6 rounded-full flex justify-center items-center">
             {ayah.number.inSurah}
           </div>
           <button className="btn btn-ghost" onClick={handlePlayMedia}>

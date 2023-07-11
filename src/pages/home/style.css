@@ -8,12 +8,28 @@
 }
 
 .card-quran {
+  background-image: url("/src/assets/svg/wave_1.svg");
+  background-size: 65rem;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .card-tajwid {
+  background-image: url("/src/assets/svg/wave_2.svg");
+  background-size: 65rem;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .card-memorize {
+  background-image: url("/src/assets/svg/wave_3.svg");
+  background-size: 65rem;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .card-bookmark {
+  background-image: url("/src/assets/svg/wave_4.svg");
+  background-size: 65rem;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .icon-menu_header {
   background-size: contain;

@@ -6,7 +6,7 @@ const Home = () => {
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
         <div className="card card-last_read w-ful bg-base-100 shadow-xl">
-          <div className="card-body">
+          <div className="card-body text-slate-100">
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
                 <h2 className="card-title">Terakhir Dibaca</h2>
@@ -37,8 +37,8 @@ const Home = () => {
       </div>
 
       <div className="grid gap-6">
-        <div className="card card-quran w-ful bg-base-100 shadow-xl h-80 bg-gradient-to-r from-bluish-cyan to-macaw-blue-green">
-          <div className="card-body justify-between">
+        <div className="card card-quran w-ful bg-base-100 shadow-xl h-80 bg-blue-green">
+          <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-quran h-24"></div>
             <div>
               <h2 className="card-title">Quran</h2>
@@ -63,8 +63,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="card w-ful bg-base-100 shadow-xl h-60 bg-gradient-to-r from-lavender to-bright-ube">
-          <div className="card-body justify-between">
+        <div className="card card-tajwid w-ful bg-base-100 shadow-xl h-60 bg-lavender">
+          <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-tajwid h-24"></div>
             <div>
               <h2 className="card-title">Tajwid</h2>
@@ -92,8 +92,8 @@ const Home = () => {
       </div>
 
       <div className="grid gap-6">
-        <div className="card w-ful bg-base-100 shadow-xl h-60 bg-gradient-to-r from-thulian-pink to-pink-pearl">
-          <div className="card-body justify-between">
+        <div className="card card-memorize w-ful bg-base-100 shadow-xl h-60 bg-dull-pink">
+          <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-memorize h-24"></div>
             <div>
               <h2 className="card-title">Hafalan</h2>
@@ -118,8 +118,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="card w-ful bg-base-100 shadow-xl h-80 bg-gradient-to-r from-dark-pastel-blue to-light-cornflower-blue">
-          <div className="card-body justify-between">
+        <div className="card card-bookmark w-ful bg-base-100 shadow-xl h-80 bg-moonstone-blue">
+          <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-bookmark h-24"></div>
             <div>
               <h2 className="card-title">Penanda</h2>
