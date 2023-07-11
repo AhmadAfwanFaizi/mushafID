@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="fixed top-0 bg-blue-400 z-10 flex justify-between py-4 text-2xl"
+      className="fixed bg-romance top-0 z-10 flex justify-between py-4 text-2xl font-semibold"
       style={{ width: "inherit" }}
     >
       {/* left */}
@@ -17,9 +17,9 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={3}
               stroke="currentColor"
-              className="w-10 h-10"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
@@ -34,9 +34,9 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={3}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
@@ -51,9 +51,9 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={3}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
@@ -80,9 +80,9 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={3}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"

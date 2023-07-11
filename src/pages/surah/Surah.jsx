@@ -1,36 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import MediaAyah from "/src/components/MediaAyah.jsx";
+import useQuranApi from "/src/hooks/useQuranApi.jsx";
+import Ayah from "/src/components/Ayah.jsx";
 
 const Surah = () => {
   const { surahId = null } = useParams();
-  const [surah, setSurah] = useState([]);
-  // const [playMedia, setPlayMedia] = useState(false);
-  const getSurah = async (surahId = null) => {
-    try {
-      const url =
-        surahId === null
-          ? "https://api.quran.gading.dev/surah"
-          : "https://api.quran.gading.dev/surah/" + surahId;
-
-      const res = await axios.get(url);
-      const data = res.data.data;
-      setSurah(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getSurah(surahId);
-  }, [surahId]);
+  const surah = useQuranApi(surahId);
 
   return (
     <div className="surah min-h-screen px-4 mt-28">
       <div className="card card-last_read w-ful bg-base-100 shadow-xl">
-        <div className="card-body items-center p-4">
+        <div className="card-body items-center p-4 text-slate-100">
           <div className="card-title">
             {surah.length != 0 && surah.name.transliteration.id}
           </div>
@@ -46,21 +25,14 @@ const Surah = () => {
       </div>
 
       <div className="overflow-x-auto mt-2">
-        <table className="table text-slate-600">
+        <table className="table">
           <tbody>
             {surah.length === 0
               ? "Loading..."
               : surah.verses.map((verse) => (
                   <tr key={verse.number.inSurah}>
                     <td>
-                      <MediaAyah />
-                      <div className="ayah flex justify-end items-center text-right text-lg py-5">
-                        <div className="w-8 h-8 flex justify-center items-center border border-slate-600 rounded-full mr-2">
-                          {verse.number.inSurah}
-                        </div>
-                        <div className="arabic">{verse.text.arab}</div>
-                      </div>
-                      <div className="translate">{verse.translation.id}</div>
+                      <Ayah ayah={verse} />
                     </td>
                   </tr>
                 ))}

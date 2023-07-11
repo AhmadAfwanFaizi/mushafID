@@ -6,6 +6,10 @@ export default {
       colors: {
         // dasar
         "pale-blue-lily": "#CFECEC",
+        // background
+        romance: "#e0f0f5",
+        // font
+        "dark-teal": "#005052",
         // menu
         topaz: "#13BBAF",
         "pale-teal": "#82CBB2",
