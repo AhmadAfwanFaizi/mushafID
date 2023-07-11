@@ -26,8 +26,19 @@ const Surah = () => {
 
   //   return console.log({ surahId }, surah);
   return (
-    <div className="surah min-h-screen px-4 mt-40">
-      <div className="overflow-x-auto">
+    <div className="surah min-h-screen px-4 mt-28">
+      <div className="card card-last_read w-ful bg-base-100 shadow-xl">
+        <div className="card-body items-center p-4">
+          <div className="card-title">{surah.name.transliteration.id}</div>
+          <div className="text-md">{surah.name.translation.id}</div>
+          <p className="text-sm mt-2">
+            {surah.revelation.id} - {surah.numberOfVerses}
+          </p>
+          <div className="card-actions justify-end"></div>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto mt-2">
         <table className="table text-slate-600">
           <tbody>
             {surah.length === 0
