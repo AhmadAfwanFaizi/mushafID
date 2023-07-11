@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { RootContext } from "/src/context/Root";
 import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
 
 const Quran = () => {
+  const context = useContext(RootContext);
+
   const { surahId = null } = useParams();
   const [dataSurah, setDataSurah] = useState([]);
   const [surah, setSurah] = useState([]);
-  const [search, setSearch] = useState(false);
   const getSurah = async (surahId = null) => {
     try {
       const url =
@@ -32,8 +34,6 @@ const Quran = () => {
     const search = e.target.value;
     console.log({ search }, search.length);
     if (search.length > 0) {
-      setSearch(true);
-
       const surah = dataSurah.filter((data) => {
         return data.name.transliteration.id
           .toLowerCase()
@@ -43,7 +43,6 @@ const Quran = () => {
       setSurah(surah);
     } else {
       setSurah(dataSurah);
-      setSearch(false);
     }
   };
 

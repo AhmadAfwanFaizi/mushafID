@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import "./style.css";
-// import bgImg from "/src/assets/icons/lantern.png";
 
-const page = () => {
+const Home = () => {
   return (
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
@@ -43,7 +43,7 @@ const page = () => {
             <div>
               <h2 className="card-title">Quran</h2>
               <div className="card-actions justify-end"></div>
-              <a href="/quran" className="link link-hover flex">
+              <Link to="/quran" className="link link-hover flex">
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ const page = () => {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -149,4 +149,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Home;
