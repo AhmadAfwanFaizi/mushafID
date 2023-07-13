@@ -1,15 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Ayah = ({ ayah }) => {
+const Ayah = ({ ayah, numberSurah }) => {
+  const loadStorage = JSON.parse(localStorage.getItem("quranApp"));
   const [playMedia, setPlayMedia] = useState(false);
-  const [bookmark, setBookmark] = useState(false);
+  const [bookmarks, setBookmarks] = useState(loadStorage);
   const handlePlayMedia = () => {
     setPlayMedia(!playMedia);
   };
 
-  const handleBookmark = () => {
-    setBookmark(!bookmark);
+  const handleBookmarks = () => {
+    setBookmarks(!bookmarks);
   };
+
+  const handleBookmark = (ayah) => {
+    const dataInsert = `${numberSurah}:${ayah}`;
+    const getStorage = JSON.parse(localStorage.getItem("quranApp"));
+    if (getStorage) {
+      const checkBookmarks = getStorage.find(
+        (bookmark) => bookmark == dataInsert
+      );
+      if (checkBookmarks === undefined) {
+        const newStorage = [...getStorage, dataInsert];
+        localStorage.setItem("quranApp", JSON.stringify(newStorage));
+        setBookmarks(newStorage);
+      } else {
+        const newStorage = getStorage.filter(
+          (storage) => storage !== dataInsert
+        );
+        localStorage.setItem("quranApp", JSON.stringify(newStorage));
+        setBookmarks(newStorage);
+      }
+    } else {
+      localStorage.setItem("quranApp", JSON.stringify([dataInsert]));
+      setBookmarks([dataInsert]);
+    }
+  };
+
+  console.log({ bookmarks });
 
   return (
     <>
@@ -75,8 +102,14 @@ const Ayah = ({ ayah }) => {
           </svg> 
         </button> */}
           {/* button save */}
-          <button className="btn btn-ghost" onClick={handleBookmark}>
-            {bookmark ? (
+          <button
+            className="btn btn-ghost"
+            onClick={() => handleBookmark(ayah.number.inSurah)}
+          >
+            {bookmarks &&
+            bookmarks.find(
+              (bookmark) => bookmark === numberSurah + ":" + ayah.number.inSurah
+            ) ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"

@@ -32,7 +32,7 @@ const Surah = () => {
               : surah.verses.map((verse) => (
                   <tr key={verse.number.inSurah}>
                     <td>
-                      <Ayah ayah={verse} />
+                      <Ayah ayah={verse} numberSurah={surah.number} />
                     </td>
                   </tr>
                 ))}
