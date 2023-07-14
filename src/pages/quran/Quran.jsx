@@ -8,6 +8,7 @@ const Quran = () => {
   const [surah, setSurah] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setDataSurah(quranApi);
     setSurah(quranApi);
   }, [quranApi]);

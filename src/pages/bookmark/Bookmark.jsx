@@ -25,6 +25,7 @@ const Bookmark = () => {
 
   //   dibuat 2 use effect agar terhindar dari invinite loop
   useEffect(() => {
+    window.scrollTo(0, 0);
     setStorage(loadStorage);
   }, []);
 

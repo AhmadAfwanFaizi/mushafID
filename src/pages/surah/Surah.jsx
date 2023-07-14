@@ -9,6 +9,9 @@ const Surah = () => {
   const { surahId = null } = useParams();
   const surah = useQuranApi(surahId);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const checkBookmark = (param) => {
     return context.checkBookmark(param);
   };
