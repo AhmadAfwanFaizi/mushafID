@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/Home";
 import Quran from "./pages/quran/Quran";
 import Surah from "./pages/surah/Surah";
+import Bookmark from "./pages/bookmark/Bookmark";
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="/quran" element={<Quran />} />
               <Route path="/surah/:surahId" element={<Surah />} />
+              <Route path="/bookmark" element={<Bookmark />} />
             </Routes>
           </div>
         </div>

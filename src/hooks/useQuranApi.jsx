@@ -10,8 +10,8 @@ const useQuranApi = (surahId) => {
           ? "https://api.quran.gading.dev/surah"
           : "https://api.quran.gading.dev/surah/" + surahId;
 
-      const res = await axios.get(url);
-      const data = res.data.data;
+      const get = await axios.get(url);
+      const data = get.data.data;
       setData(data);
     } catch (error) {
       console.log(error);

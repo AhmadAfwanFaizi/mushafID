@@ -1,51 +1,28 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { RootContext } from "/src/context/Root";
+const Ayah = ({ data, surahId, bookmark }) => {
+  const context = useContext(RootContext);
 
-const Ayah = ({ ayah, numberSurah }) => {
-  const loadStorage = JSON.parse(localStorage.getItem("quranApp"));
+  // ? kenapa menggunakan context untuk menyimpan data sementara
+  // : karena jika menggunakan state, pada tiap komponen data di loop berdasarkan surah, ketika tombil bookmark di klik, react mengidentifikasi bahwa itu state baru pada tiap component dengan nama yang sama
+
   const [playMedia, setPlayMedia] = useState(false);
-  const [bookmarks, setBookmarks] = useState(loadStorage);
-  const handlePlayMedia = () => {
-    setPlayMedia(!playMedia);
-  };
 
-  const handleBookmarks = () => {
-    setBookmarks(!bookmarks);
+  const handleBookmark = (param) => {
+    context.handleBookmark(param);
   };
-
-  const handleBookmark = (ayah) => {
-    const dataInsert = `${numberSurah}:${ayah}`;
-    const getStorage = JSON.parse(localStorage.getItem("quranApp"));
-    if (getStorage) {
-      const checkBookmarks = getStorage.find(
-        (bookmark) => bookmark == dataInsert
-      );
-      if (checkBookmarks === undefined) {
-        const newStorage = [...getStorage, dataInsert];
-        localStorage.setItem("quranApp", JSON.stringify(newStorage));
-        setBookmarks(newStorage);
-      } else {
-        const newStorage = getStorage.filter(
-          (storage) => storage !== dataInsert
-        );
-        localStorage.setItem("quranApp", JSON.stringify(newStorage));
-        setBookmarks(newStorage);
-      }
-    } else {
-      localStorage.setItem("quranApp", JSON.stringify([dataInsert]));
-      setBookmarks([dataInsert]);
-    }
-  };
-
-  console.log({ bookmarks });
 
   return (
     <>
       <div className="media flex justify-between items-center h-10 bg-slate-100 rounded-full">
         <div className="media-left flex items-center content-around pl-2">
           <div className="bg-topaz text-slate-100 w-6 h-6 rounded-full flex justify-center items-center">
-            {ayah.number.inSurah}
+            {data.number.inSurah}
           </div>
-          <button className="btn btn-ghost" onClick={handlePlayMedia}>
+          <button
+            className="btn btn-ghost"
+            onClick={() => handlePlayMedia(data.number.inSurah)}
+          >
             {playMedia ? (
               <div>
                 <svg
@@ -104,12 +81,9 @@ const Ayah = ({ ayah, numberSurah }) => {
           {/* button save */}
           <button
             className="btn btn-ghost"
-            onClick={() => handleBookmark(ayah.number.inSurah)}
+            onClick={() => handleBookmark(`${surahId}:${data.number.inSurah}`)}
           >
-            {bookmarks &&
-            bookmarks.find(
-              (bookmark) => bookmark === numberSurah + ":" + ayah.number.inSurah
-            ) ? (
+            {bookmark ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -142,9 +116,9 @@ const Ayah = ({ ayah, numberSurah }) => {
         </div>
       </div>
       <div className="ayah flex justify-end items-center text-right text-lg py-5">
-        <div className="arabic">{ayah.text.arab}</div>
+        <div className="arabic">{data.text.arab}</div>
       </div>
-      <div className="translate">{ayah.translation.id}</div>
+      <div className="translate">{data.translation.id}</div>
     </>
   );
 };

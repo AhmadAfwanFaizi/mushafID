@@ -1,10 +1,17 @@
+import { useContext, useState, useEffect } from "react";
+import { RootContext } from "/src/context/Root";
 import { useParams } from "react-router-dom";
 import useQuranApi from "/src/hooks/useQuranApi.jsx";
 import Ayah from "/src/components/Ayah.jsx";
 
 const Surah = () => {
+  const context = useContext(RootContext);
   const { surahId = null } = useParams();
   const surah = useQuranApi(surahId);
+
+  const checkBookmark = (param) => {
+    return context.checkBookmark(param);
+  };
 
   return (
     <div className="surah min-h-screen px-4 mt-28">
@@ -32,7 +39,13 @@ const Surah = () => {
               : surah.verses.map((verse) => (
                   <tr key={verse.number.inSurah}>
                     <td>
-                      <Ayah ayah={verse} numberSurah={surah.number} />
+                      <Ayah
+                        data={verse}
+                        surahId={surahId}
+                        bookmark={checkBookmark(
+                          `${surahId}:${verse.number.inSurah}`
+                        )}
+                      />
                     </td>
                   </tr>
                 ))}

@@ -1,11 +1,8 @@
-import { useEffect, useState, useContext } from "react";
-// import { RootContext } from "/src/context/Root";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useQuranApi from "/src/hooks/useQuranApi";
 
 const Quran = () => {
-  // const context = useContext(RootContext);
-
   const quranApi = useQuranApi(null);
   const [dataSurah, setDataSurah] = useState([]);
   const [surah, setSurah] = useState([]);

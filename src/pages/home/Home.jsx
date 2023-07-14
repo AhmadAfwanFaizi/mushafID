@@ -124,7 +124,7 @@ const Home = () => {
             <div>
               <h2 className="card-title">Penanda</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover flex">
+              <Link to="/bookmark" className="link link-hover flex">
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ const Home = () => {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
