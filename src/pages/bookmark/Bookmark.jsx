@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { RootContext } from "/src/context/Root";
-
 import axios from "axios";
 import Ayah from "/src/components/Ayah.jsx";
 
@@ -13,10 +12,10 @@ const Bookmark = () => {
 
   const getAyah = async (surahId, ayahNumber) => {
     try {
-      const url = `https://api.quran.gading.dev/surah/${surahId}/${ayahNumber}`;
-      const res = await axios.get(url);
-      const resData = res.data.data;
-      const data = { ...resData, surahId };
+      const urlAyah = `https://api.quran.gading.dev/surah/${surahId}/${ayahNumber}`;
+      const getAyah = await axios.get(urlAyah);
+      const ayahData = getAyah.data.data;
+      const data = { ...ayahData, surahId };
       setBookmarksData((prev) => [...prev, data]);
     } catch (error) {
       console.log(error);
@@ -60,6 +59,7 @@ const Bookmark = () => {
                       <Ayah
                         data={verse}
                         surahId={verse.surahId}
+                        surah={true}
                         bookmark={checkBookmark(
                           `${verse.surahId}:${verse.number.inSurah}`
                         )}

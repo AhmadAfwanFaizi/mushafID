@@ -1,16 +1,17 @@
 import { useContext, useState, useEffect } from "react";
 import { RootContext } from "/src/context/Root";
-const Ayah = ({ data, surahId, bookmark }) => {
+const Ayah = ({ data, surah = false, surahId, bookmark }) => {
   const context = useContext(RootContext);
 
   // ? kenapa menggunakan context untuk menyimpan data sementara
   // : karena jika menggunakan state, pada tiap komponen data di loop berdasarkan surah, ketika tombil bookmark di klik, react mengidentifikasi bahwa itu state baru pada tiap component dengan nama yang sama
 
   const [playMedia, setPlayMedia] = useState(false);
-
   const handleBookmark = (param) => {
     context.handleBookmark(param);
   };
+
+  console.log({ data });
 
   return (
     <>
@@ -60,6 +61,11 @@ const Ayah = ({ data, surahId, bookmark }) => {
             )}
           </button>
         </div>
+        {surah && (
+          <div className="media-center font-medium">
+            {data.surah.name.transliteration.id}
+          </div>
+        )}
         <div className="media-right">
           {/* button share */}
           {/* <button className="btn btn-ghost">
