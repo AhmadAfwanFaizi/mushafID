@@ -6,12 +6,23 @@ const Ayah = ({ data, surah = false, surahId, bookmark }) => {
   // ? kenapa menggunakan context untuk menyimpan data sementara
   // : karena jika menggunakan state, pada tiap komponen data di loop berdasarkan surah, ketika tombil bookmark di klik, react mengidentifikasi bahwa itu state baru pada tiap component dengan nama yang sama
 
-  const [playMedia, setPlayMedia] = useState(false);
+  const [playAudio, setPlayAudio] = useState(false);
+  const [activeAudio, setActiveAudio] = useState({});
+
+  const handlePlayAudio = (numberSurah) => {
+    const audioStatus = !playAudio;
+    setPlayAudio(audioStatus);
+    if (audioStatus) {
+      const audio = document.getElementById("audio-" + numberSurah);
+      audio.play();
+      setActiveAudio(audio);
+    } else {
+      activeAudio.pause();
+    }
+  };
   const handleBookmark = (param) => {
     context.handleBookmark(param);
   };
-
-  console.log({ data });
 
   return (
     <>
@@ -22,44 +33,43 @@ const Ayah = ({ data, surah = false, surahId, bookmark }) => {
           </div>
           <button
             className="btn btn-ghost"
-            onClick={() => handlePlayMedia(data.number.inSurah)}
+            onClick={() => handlePlayAudio(data.number.inSurah)}
           >
-            {playMedia ? (
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 5.25v13.5m-7.5-13.5v13.5"
-                  />
-                </svg>
-              </div>
+            {playAudio ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+                  clipRule="evenodd"
+                />
+              </svg>
             ) : (
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-                  />
-                </svg>
-              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                />
+              </svg>
             )}
           </button>
+          <audio
+            id={"audio-" + data.number.inSurah}
+            src={data.audio.primary}
+            onEnded={() => handlePlayAudio(data.number.inSurah)}
+          ></audio>
         </div>
         {surah && (
           <div className="media-center font-medium">

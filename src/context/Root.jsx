@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 const RootContext = createContext();
 const RootProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState([]);
+  const [audio, setAudio] = useState("");
 
   const checkBookmark = (param) => {
     const check = bookmarks
@@ -39,7 +40,9 @@ const RootProvider = ({ children }) => {
   }, []);
 
   return (
-    <RootContext.Provider value={{ bookmarks, checkBookmark, handleBookmark }}>
+    <RootContext.Provider
+      value={{ audio, setAudio, bookmarks, checkBookmark, handleBookmark }}
+    >
       {children}
     </RootContext.Provider>
   );
