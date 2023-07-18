@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import Quran from "./pages/quran/Quran";
 import Surah from "./pages/surah/Surah";
 import Bookmark from "./pages/bookmark/Bookmark";
+import Modal from "./components/Modal";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ function App() {
       <RootProvider>
         <div className="mx-auto flex justify-center">
           <div className="app w-screen min-h-max lg:w-1/2">
+            <Modal />
             <Navbar />
             <Routes>
               <Route index element={<Home />} />

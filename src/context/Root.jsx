@@ -49,6 +49,18 @@ const RootProvider = ({ children }) => {
     setLastRead(lastRead);
   }, []);
 
+  const [dataModal, setDataModal] = useState({
+    title: "",
+    subtitle: "",
+  });
+  const showModal = (title, subtitle) => {
+    setDataModal({
+      title,
+      subtitle,
+    });
+    window.modal.showModal();
+  };
+
   return (
     <RootContext.Provider
       value={{
@@ -59,6 +71,8 @@ const RootProvider = ({ children }) => {
         handleBookmark,
         lastRead,
         handleLastRead,
+        dataModal,
+        showModal,
       }}
     >
       {children}

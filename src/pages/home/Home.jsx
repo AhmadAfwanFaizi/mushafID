@@ -4,7 +4,6 @@ import { RootContext } from "/src/context/Root";
 import "./style.css";
 const Home = () => {
   const context = useContext(RootContext);
-
   return (
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
@@ -77,7 +76,12 @@ const Home = () => {
             <div>
               <h2 className="card-title">Tajwid</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover flex">
+              <button
+                className="link link-hover flex"
+                onClick={() =>
+                  context.showModal("Hello", "Fitur masih belum tersedia...")
+                }
+              >
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +97,7 @@ const Home = () => {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -106,7 +110,13 @@ const Home = () => {
             <div>
               <h2 className="card-title">Hafalan</h2>
               <div className="card-actions justify-end"></div>
-              <a href="" className="link link-hover flex">
+              <a
+                href="#"
+                className="link link-hover flex"
+                onClick={() =>
+                  context.showModal("Hello", "Fitur masih belum tersedia...")
+                }
+              >
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
