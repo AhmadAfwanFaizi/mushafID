@@ -128,15 +128,15 @@ const Navbar = () => {
       style={{ width: "inherit" }}
     >
       {/* left */}
-      <div className="left">{navLeft(path[1])}</div>
+      <div className="left w-16">{navLeft(path[1])}</div>
 
       {/* center */}
       <div className="center m-auto">
-        <h1>MyQuran</h1>
+        <h1>MushafID</h1>
       </div>
 
       {/* right */}
-      <div className="right">{navRight(path[1])}</div>
+      <div className="right w-16">{navRight(path[1])}</div>
     </div>
   );
 };
