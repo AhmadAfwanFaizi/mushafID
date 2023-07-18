@@ -4,6 +4,7 @@ import { RootContext } from "/src/context/Root";
 import "./style.css";
 const Home = () => {
   const context = useContext(RootContext);
+
   return (
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
@@ -12,30 +13,36 @@ const Home = () => {
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
                 <h2 className="card-title">Terakhir Dibaca</h2>
-                <p>
-                  {context.lastRead.namaSurah} : {context.lastRead.ayah}
-                </p>
+                {context.lastRead ? (
+                  <p>
+                    {context.lastRead.namaSurah} : {context.lastRead.ayah}
+                  </p>
+                ) : (
+                  <p>Belum ada yang dibaca nih...</p>
+                )}
                 <div className="card-actions justify-end"></div>
-                <Link
-                  to={`/surah/${context.lastRead.surahId}#${context.lastRead.ayah}`}
-                  className="link link-hover flex"
-                >
-                  Mulai
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
+                {context.lastRead && (
+                  <Link
+                    to={`/surah/${context.lastRead.surahId}#${context.lastRead.ayah}`}
+                    className="link link-hover flex"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </Link>
+                    Mulai
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </Link>
+                )}
               </div>
               <div className="col-span-1 icon-menu_header icon-last_read h-24"></div>
             </div>

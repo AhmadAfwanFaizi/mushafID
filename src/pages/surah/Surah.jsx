@@ -18,7 +18,6 @@ const Surah = () => {
 
   useEffect(() => {
     if (hash) {
-      console.log("masuk hash");
       window.location.href = `${hash}`;
     }
   }, [surah]);

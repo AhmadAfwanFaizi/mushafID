@@ -30,44 +30,52 @@ const Bookmark = () => {
   }, []);
 
   useEffect(() => {
-    storage.map((data) => {
-      const split = data.split(":");
-      const surahId = split[0];
-      const numberAyah = split[1];
+    storage &&
+      storage.map((data) => {
+        const split = data.split(":");
+        const surahId = split[0];
+        const numberAyah = split[1];
 
-      getAyah(surahId, numberAyah);
-    });
+        getAyah(surahId, numberAyah);
+      });
   }, [storage]);
 
+  console.log({ storage });
   return (
     <div className="bookmark min-h-screen px-4 mt-28">
       <div className="overflow-x-auto mt-2">
-        <table className="table">
-          <tbody>
-            {bookmarksData.length === 0 ? (
-              <Loading
-                count={7}
-                height="3rem"
-                style={{ marginBottom: "1rem" }}
-              />
-            ) : (
-              bookmarksData.map((verse, index) => (
-                <tr key={index}>
-                  <td>
-                    <Ayah
-                      data={verse}
-                      surahId={verse.surahId}
-                      surah={true}
-                      bookmark={context.checkBookmark(
-                        `${verse.surahId}:${verse.number.inSurah}`
-                      )}
-                    />
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+        {loadStorage ? (
+          <table className="table">
+            <tbody>
+              {bookmarksData.length === 0 ? (
+                <Loading
+                  count={7}
+                  height="3rem"
+                  style={{ marginBottom: "1rem" }}
+                />
+              ) : (
+                bookmarksData.map((verse, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Ayah
+                        data={verse}
+                        surahId={verse.surahId}
+                        surah={true}
+                        bookmark={context.checkBookmark(
+                          `${verse.surahId}:${verse.number.inSurah}`
+                        )}
+                      />
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        ) : (
+          <div className="flex items-center justify-around h-screen">
+            Kosong
+          </div>
+        )}
       </div>
     </div>
   );
