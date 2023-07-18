@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { RootContext } from "/src/context/Root";
 import "./style.css";
-
 const Home = () => {
   const context = useContext(RootContext);
 

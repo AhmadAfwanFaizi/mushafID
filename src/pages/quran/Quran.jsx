@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useQuranApi from "/src/hooks/useQuranApi";
+import Loading from "/src/components/Loading";
 
 const Quran = () => {
   const quranApi = useQuranApi(null);
@@ -65,34 +66,40 @@ const Quran = () => {
         <div className="overflow-x-auto">
           <table className="table">
             <tbody>
-              {surah.length === 0
-                ? "loading..."
-                : surah.map((data) => (
-                    <tr key={data.number}>
-                      <Link to={`/surah/${data.number}`} className="contents">
-                        <td className="w-[100px]">
-                          <div
-                            className="w-12 h-12 flex justify-center items-center"
-                            style={{
-                              backgroundImage: `url('/src/assets/svg/ayah.svg')`,
-                              backgroundSize: "cover",
-                            }}
-                          >
-                            {data.number}
-                          </div>
-                        </td>
-                        <td className="text-lg flex flex-col text-slate-800">
-                          {data.name.transliteration.id}
-                          <span className="text-sm text-slate-500">
-                            {data.revelation.id} - {data.numberOfVerses}
-                          </span>
-                        </td>
-                        <td className="text-lg text-right arabic">
-                          {data.name.short}
-                        </td>
-                      </Link>
-                    </tr>
-                  ))}
+              {surah.length === 0 ? (
+                <Loading
+                  count={7}
+                  height="3rem"
+                  style={{ marginBottom: "1rem" }}
+                />
+              ) : (
+                surah.map((data) => (
+                  <tr key={data.number}>
+                    <Link to={`/surah/${data.number}`} className="contents">
+                      <td className="w-[100px]">
+                        <div
+                          className="w-12 h-12 flex justify-center items-center"
+                          style={{
+                            backgroundImage: `url('/src/assets/svg/ayah.svg')`,
+                            backgroundSize: "cover",
+                          }}
+                        >
+                          {data.number}
+                        </div>
+                      </td>
+                      <td className="text-lg flex flex-col text-slate-800">
+                        {data.name.transliteration.id}
+                        <span className="text-sm text-slate-500">
+                          {data.revelation.id} - {data.numberOfVerses}
+                        </span>
+                      </td>
+                      <td className="text-lg text-right arabic">
+                        {data.name.short}
+                      </td>
+                    </Link>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

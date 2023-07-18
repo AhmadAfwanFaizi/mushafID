@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { RootContext } from "/src/context/Root";
 import axios from "axios";
 import Ayah from "/src/components/Ayah.jsx";
+import Loading from "/src/components/Loading";
 
 const Bookmark = () => {
   const context = useContext(RootContext);
@@ -43,22 +44,28 @@ const Bookmark = () => {
       <div className="overflow-x-auto mt-2">
         <table className="table">
           <tbody>
-            {bookmarksData.length === 0
-              ? "Loading..."
-              : bookmarksData.map((verse, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Ayah
-                        data={verse}
-                        surahId={verse.surahId}
-                        surah={true}
-                        bookmark={context.checkBookmark(
-                          `${verse.surahId}:${verse.number.inSurah}`
-                        )}
-                      />
-                    </td>
-                  </tr>
-                ))}
+            {bookmarksData.length === 0 ? (
+              <Loading
+                count={7}
+                height="3rem"
+                style={{ marginBottom: "1rem" }}
+              />
+            ) : (
+              bookmarksData.map((verse, index) => (
+                <tr key={index}>
+                  <td>
+                    <Ayah
+                      data={verse}
+                      surahId={verse.surahId}
+                      surah={true}
+                      bookmark={context.checkBookmark(
+                        `${verse.surahId}:${verse.number.inSurah}`
+                      )}
+                    />
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
