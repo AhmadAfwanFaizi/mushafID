@@ -4,6 +4,7 @@ const RootContext = createContext();
 const RootProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState([]);
   const [audio, setAudio] = useState("");
+  const [lastRead, setLastRead] = useState("");
 
   const checkBookmark = (param) => {
     const check = bookmarks
@@ -15,7 +16,7 @@ const RootProvider = ({ children }) => {
   };
 
   const insertStorage = (param) => {
-    localStorage.setItem("quranApp", JSON.stringify(param));
+    localStorage.setItem("quranAppBookmark", JSON.stringify(param));
     setBookmarks(param);
   };
   const handleBookmark = (dataInsert) => {
@@ -34,14 +35,31 @@ const RootProvider = ({ children }) => {
     }
   };
 
+  const handleLastRead = (namaSurah, surahId, ayah) => {
+    const param = { namaSurah, surahId, ayah };
+    setLastRead(param);
+    localStorage.setItem("quranAppLastRead", JSON.stringify(param));
+  };
+
   useEffect(() => {
-    const loadStorage = JSON.parse(localStorage.getItem("quranApp"));
-    setBookmarks(loadStorage);
+    const bookmark = JSON.parse(localStorage.getItem("quranAppBookmark"));
+    setBookmarks(bookmark);
+
+    const lastRead = JSON.parse(localStorage.getItem("quranAppLastRead"));
+    setLastRead(lastRead);
   }, []);
 
   return (
     <RootContext.Provider
-      value={{ audio, setAudio, bookmarks, checkBookmark, handleBookmark }}
+      value={{
+        audio,
+        setAudio,
+        bookmarks,
+        checkBookmark,
+        handleBookmark,
+        lastRead,
+        handleLastRead,
+      }}
     >
       {children}
     </RootContext.Provider>

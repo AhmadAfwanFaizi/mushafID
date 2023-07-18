@@ -4,8 +4,8 @@ import axios from "axios";
 import Ayah from "/src/components/Ayah.jsx";
 
 const Bookmark = () => {
-  const loadStorage = JSON.parse(localStorage.getItem("quranApp"));
   const context = useContext(RootContext);
+  const loadStorage = context.bookmarks;
 
   const [storage, setStorage] = useState([]);
   const [bookmarksData, setBookmarksData] = useState([]);
@@ -38,14 +38,6 @@ const Bookmark = () => {
     });
   }, [storage]);
 
-  const checkBookmark = (param) => {
-    return context.checkBookmark(param);
-  };
-
-  const handlePlayMedia = (param) => {
-    console.log(param);
-  };
-
   return (
     <div className="bookmark min-h-screen px-4 mt-28">
       <div className="overflow-x-auto mt-2">
@@ -60,7 +52,7 @@ const Bookmark = () => {
                         data={verse}
                         surahId={verse.surahId}
                         surah={true}
-                        bookmark={checkBookmark(
+                        bookmark={context.checkBookmark(
                           `${verse.surahId}:${verse.number.inSurah}`
                         )}
                       />

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { RootContext } from "/src/context/Root";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import useQuranApi from "/src/hooks/useQuranApi.jsx";
 import Ayah from "/src/components/Ayah.jsx";
 
@@ -8,12 +8,22 @@ const Surah = () => {
   const context = useContext(RootContext);
   const { surahId = null } = useParams();
   const surah = useQuranApi(surahId);
+  const location = useLocation();
+  const hash = location.hash;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const checkBookmark = (param) => {
-    return context.checkBookmark(param);
+
+  useEffect(() => {
+    if (hash) {
+      console.log("masuk hash");
+      window.location.href = `${hash}`;
+    }
+  }, [surah]);
+
+  const handleLastRead = (namaSurah, surahId, ayah) => {
+    context.handleLastRead(namaSurah, surahId, ayah);
   };
 
   return (
@@ -40,12 +50,29 @@ const Surah = () => {
             {surah.length === 0
               ? "Loading..."
               : surah.verses.map((verse) => (
-                  <tr key={verse.number.inSurah}>
+                  <tr
+                    key={verse.number.inSurah}
+                    id={verse.number.inSurah}
+                    onTouchStart={() =>
+                      handleLastRead(
+                        surah.name.transliteration.id,
+                        surahId,
+                        verse.number.inSurah
+                      )
+                    }
+                    onClick={() =>
+                      handleLastRead(
+                        surah.name.transliteration.id,
+                        surahId,
+                        verse.number.inSurah
+                      )
+                    }
+                  >
                     <td>
                       <Ayah
                         data={verse}
                         surahId={surahId}
-                        bookmark={checkBookmark(
+                        bookmark={context.checkBookmark(
                           `${surahId}:${verse.number.inSurah}`
                         )}
                       />

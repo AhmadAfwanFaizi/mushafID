@@ -19,7 +19,10 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/quran" element={<Quran />} />
-              <Route path="/surah/:surahId" element={<Surah />} />
+              <Route path="/surah">
+                <Route path=":surahId" element={<Surah />} />
+                {/* <Route path=":surahId/:ayah" element={<Surah />} /> */}
+              </Route>
               <Route path="/bookmark" element={<Bookmark />} />
             </Routes>
           </div>

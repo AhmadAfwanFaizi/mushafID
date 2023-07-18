@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { RootContext } from "/src/context/Root";
 import "./style.css";
 
 const Home = () => {
+  const context = useContext(RootContext);
+
   return (
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
       <div className="col-span-2">
@@ -10,9 +14,14 @@ const Home = () => {
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
                 <h2 className="card-title">Terakhir Dibaca</h2>
-                <p>Al Fatihah : 4</p>
+                <p>
+                  {context.lastRead.namaSurah} : {context.lastRead.ayah}
+                </p>
                 <div className="card-actions justify-end"></div>
-                <a href="" className="link link-hover flex">
+                <Link
+                  to={`/surah/${context.lastRead.surahId}#${context.lastRead.ayah}`}
+                  className="link link-hover flex"
+                >
                   Mulai
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +37,7 @@ const Home = () => {
                       d="M8.25 4.5l7.5 7.5-7.5 7.5"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
               <div className="col-span-1 icon-menu_header icon-last_read h-24"></div>
             </div>
