@@ -51,7 +51,7 @@ const Home = () => {
       </div>
 
       <div className="grid gap-6">
-        <div className="card card-quran w-ful bg-base-100 shadow-xl h-80 bg-blue-green">
+        <div className="card card-quran w-ful bg-base-100 shadow-xl h-64 bg-blue-green">
           <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-quran h-24"></div>
             <div>
@@ -77,7 +77,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="card card-tajwid w-ful bg-base-100 shadow-xl h-60 bg-lavender">
+        <div className="card card-tajwid w-ful bg-base-100 shadow-xl h-52 bg-lavender">
           <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-tajwid h-24"></div>
             <div>
@@ -111,7 +111,7 @@ const Home = () => {
       </div>
 
       <div className="grid gap-6">
-        <div className="card card-memorize w-ful bg-base-100 shadow-xl h-60 bg-dull-pink">
+        <div className="card card-memorize w-ful bg-base-100 shadow-xl h-52 bg-dull-pink">
           <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-memorize h-24"></div>
             <div>
@@ -143,7 +143,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="card card-bookmark w-ful bg-base-100 shadow-xl h-80 bg-moonstone-blue">
+        <div className="card card-bookmark w-ful bg-base-100 shadow-xl h-64 bg-moonstone-blue">
           <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-bookmark h-24"></div>
             <div>

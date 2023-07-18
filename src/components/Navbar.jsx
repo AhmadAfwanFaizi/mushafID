@@ -1,14 +1,23 @@
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { RootContext } from "/src/context/Root";
 
 const Navbar = () => {
   const location = useLocation();
   const path = location.pathname.split("/");
+  const context = useContext(RootContext);
 
   const navLeft = (pathParam) => {
     switch (pathParam) {
       case "":
         return (
-          <Link to="/" className="btn btn-ghost">
+          <Link
+            to="/"
+            className="btn btn-ghost"
+            onClick={() =>
+              context.showModal("Hello", "Fitur masih belum tersedia...")
+            }
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -97,7 +106,13 @@ const Navbar = () => {
     switch (pathParam) {
       case "surah":
         return (
-          <Link to={"/"} className="btn btn-ghost">
+          <Link
+            to={"#"}
+            className="btn btn-ghost"
+            onClick={() =>
+              context.showModal("Hello", "Fitur masih belum tersedia...")
+            }
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

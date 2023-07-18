@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <RootProvider>
         <div className="mx-auto flex justify-center">
-          <div className="app w-screen min-h-max lg:w-1/2">
+          <div className="app w-screen min-h-screen lg:w-1/2">
             <Modal />
             <Navbar />
             <Routes>
