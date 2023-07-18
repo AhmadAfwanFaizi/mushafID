@@ -40,6 +40,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left;
+  width: 90px;
 }
 .icon-last_read {
   background-image: url("/src/assets/icons/lantern.png");
