@@ -1,11 +1,12 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { RootContext } from "/src/context/Root";
+import PropTypes from "prop-types";
 
 import {
   PlayIcon,
   PauseIcon,
   MapPinIcon,
-  ShareIcon,
+  // ShareIcon,
   BookmarkIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -13,13 +14,7 @@ import {
   MapPinIcon as MapPinIconSolid,
 } from "@heroicons/react/24/solid";
 
-const Ayah = ({
-  surahName,
-  data,
-  surahId,
-  bookmarkPage = false,
-  checkBookmark,
-}) => {
+const Ayah = ({ surahName, data, surahId, bookmarkPage, checkBookmark }) => {
   const context = useContext(RootContext);
 
   // ? kenapa menggunakan context untuk menyimpan data sementara
@@ -120,6 +115,18 @@ const Ayah = ({
       <div className="translate">{data.translation.id}</div>
     </>
   );
+};
+
+Ayah.propTypes = {
+  surahName: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+  surahId: PropTypes.string.isRequired,
+  bookmarkPage: PropTypes.bool.isRequired,
+  checkBookmark: PropTypes.func.isRequired,
+};
+
+Ayah.defaultProps = {
+  bookmarkPage: false,
 };
 
 export default Ayah;

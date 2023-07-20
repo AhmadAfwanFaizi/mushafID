@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { RootContext } from "/src/context/Root";
 import { useParams, useLocation } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
