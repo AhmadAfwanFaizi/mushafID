@@ -84,7 +84,7 @@ const Surah = () => {
               autoComplete="off"
             />
             <button
-              className="absolute inset-y-4 right-1 flex items-center  btn btn-circle"
+              className="absolute inset-y-4 right-0 flex items-center  btn btn-circle"
               onClick={handleSearchAyah}
             >
               <MagnifyingGlassIcon className="h-6 w-6" />
