@@ -24,7 +24,11 @@ const Navbar = () => {
               context.showModal("Hello", "Fitur masih belum tersedia...")
             }
           >
-            <Bars3Icon className="h-7 w-7" title="Pilihan" />
+            <Bars3Icon
+              className="h-7 w-7 font-semibold"
+              title="Pilihan"
+              strokeWidth="2"
+            />
           </Link>
         );
         break;
@@ -32,21 +36,33 @@ const Navbar = () => {
       case "quran":
         return (
           <Link to="/" className="btn btn-ghost">
-            <HomeIcon className="h-7 w-7" title="Halaman Utama" />
+            <HomeIcon
+              className="h-7 w-7"
+              title="Halaman Utama"
+              strokeWidth="2"
+            />
           </Link>
         );
         break;
       case "surah":
         return (
           <Link to="/quran" className="btn btn-ghost">
-            <ChevronLeftIcon className="h-7 w-7" title="Kembali" />
+            <ChevronLeftIcon
+              className="h-7 w-7"
+              title="Kembali"
+              strokeWidth="2"
+            />
           </Link>
         );
         break;
       case "bookmark":
         return (
           <Link to="/" className="btn btn-ghost">
-            <HomeIcon className="h-7 w-7" title="Halaman Utama" />
+            <HomeIcon
+              className="h-7 w-7"
+              title="Halaman Utama"
+              strokeWidth="2"
+            />
           </Link>
         );
         break;
@@ -65,7 +81,7 @@ const Navbar = () => {
             title="Cari"
             onClick={() => window.modalSearchAyah.showModal()}
           >
-            <MagnifyingGlassIcon className="h-7 w-7" />
+            <MagnifyingGlassIcon className="h-7 w-7" strokeWidth="2" />
           </button>
         );
         break;
