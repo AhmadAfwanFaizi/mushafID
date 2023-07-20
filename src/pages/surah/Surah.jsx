@@ -49,16 +49,12 @@ const Surah = () => {
       )}
 
       <div className="overflow-x-auto mt-2">
-        <table className="table">
-          <tbody>
-            {surah.length === 0 ? (
-              <Loading
-                count={7}
-                height="3rem"
-                style={{ marginBottom: "1rem" }}
-              />
-            ) : (
-              surah.verses.map((verse) => (
+        {surah.length === 0 ? (
+          <Loading count={7} height="3rem" style={{ marginBottom: "1rem" }} />
+        ) : (
+          <table className="table">
+            <tbody>
+              {surah.verses.map((verse) => (
                 <tr
                   key={verse.number.inSurah}
                   id={verse.number.inSurah}
@@ -87,10 +83,10 @@ const Surah = () => {
                     />
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

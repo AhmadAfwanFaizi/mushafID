@@ -64,16 +64,18 @@ const Quran = () => {
 
       <div className="surah min-h-screen px-4 mt-40">
         <div className="overflow-x-auto">
-          <table className="table">
-            <tbody>
-              {surah.length === 0 ? (
-                <Loading
-                  count={7}
-                  height="3rem"
-                  style={{ marginBottom: "1rem" }}
-                />
-              ) : (
-                surah.map((data) => (
+          {surah.length === 0 ? (
+            <div className="mt-4">
+              <Loading
+                count={7}
+                height="3rem"
+                style={{ marginBottom: "1rem" }}
+              />
+            </div>
+          ) : (
+            <table className="table">
+              <tbody>
+                {surah.map((data) => (
                   <tr key={data.number}>
                     <Link to={`/surah/${data.number}`} className="contents">
                       <td className="w-[100px]">
@@ -98,10 +100,10 @@ const Quran = () => {
                       </td>
                     </Link>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>
