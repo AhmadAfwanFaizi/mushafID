@@ -1,6 +1,12 @@
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RootContext } from "/src/context/Root";
+import {
+  Bars3Icon,
+  HomeIcon,
+  ChevronLeftIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 
 const Navbar = () => {
   const location = useLocation();
@@ -18,20 +24,7 @@ const Navbar = () => {
               context.showModal("Hello", "Fitur masih belum tersedia...")
             }
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            <Bars3Icon className="h-7 w-7" title="Pilihan" />
           </Link>
         );
         break;
@@ -39,60 +32,21 @@ const Navbar = () => {
       case "quran":
         return (
           <Link to="/" className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
+            <HomeIcon className="h-7 w-7" title="Halaman Utama" />
           </Link>
         );
         break;
       case "surah":
         return (
           <Link to="/quran" className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
+            <ChevronLeftIcon className="h-7 w-7" title="Kembali" />
           </Link>
         );
         break;
       case "bookmark":
         return (
           <Link to="/" className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
+            <HomeIcon className="h-7 w-7" title="Halaman Utama" />
           </Link>
         );
         break;
@@ -109,24 +63,12 @@ const Navbar = () => {
           <Link
             to={"#"}
             className="btn btn-ghost"
+            title="Cari"
             onClick={() =>
               context.showModal("Hello", "Fitur masih belum tersedia...")
             }
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
+            <MagnifyingGlassIcon className="h-7 w-7" />
           </Link>
         );
         break;

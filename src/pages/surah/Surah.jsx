@@ -22,9 +22,9 @@ const Surah = () => {
     }
   }, [surah]);
 
-  const handleLastRead = (namaSurah, surahId, ayah) => {
-    context.handleLastRead(namaSurah, surahId, ayah);
-  };
+  // const handleLastRead = (namaSurah, surahId, ayah) => {
+  //   context.handleLastRead(namaSurah, surahId, ayah);
+  // };
 
   return (
     <div className="surah min-h-screen px-4 mt-28">
@@ -58,23 +58,24 @@ const Surah = () => {
                 <tr
                   key={verse.number.inSurah}
                   id={verse.number.inSurah}
-                  onTouchStart={() =>
-                    handleLastRead(
-                      surah.name.transliteration.id,
-                      surahId,
-                      verse.number.inSurah
-                    )
-                  }
-                  onClick={() =>
-                    handleLastRead(
-                      surah.name.transliteration.id,
-                      surahId,
-                      verse.number.inSurah
-                    )
-                  }
+                  // onTouchStart={() =>
+                  //   handleLastRead(
+                  //     surah.name.transliteration.id,
+                  //     surahId,
+                  //     verse.number.inSurah
+                  //   )
+                  // }
+                  // onClick={() =>
+                  //   handleLastRead(
+                  //     surah.name.transliteration.id,
+                  //     surahId,
+                  //     verse.number.inSurah
+                  //   )
+                  // }
                 >
                   <td>
                     <Ayah
+                      surahName={surah.name}
                       data={verse}
                       surahId={surahId}
                       bookmark={context.checkBookmark(

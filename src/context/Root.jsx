@@ -4,7 +4,7 @@ const RootContext = createContext();
 const RootProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState([]);
   const [audio, setAudio] = useState("");
-  const [lastRead, setLastRead] = useState("");
+  const [lastRead, setLastRead] = useState({});
 
   const checkBookmark = (param) => {
     const check = bookmarks
