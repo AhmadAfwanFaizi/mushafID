@@ -92,7 +92,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
           className="pin last-read"
           onClick={() =>
             handleLastRead(
-              surahName.name.transliteration.id,
+              surahName.transliteration.id,
               surahId,
               data.number.inSurah
             )
