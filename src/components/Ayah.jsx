@@ -88,8 +88,8 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
         </div>
       </div>
       <div className="ayah flex justify-between items-center text-right text-lg py-5">
-        <div
-          className="pin last-read"
+        <button
+          className="btn btn-ghost pin last-read"
           onClick={() =>
             handleLastRead(
               surahName.transliteration.id,
@@ -97,7 +97,6 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
               data.number.inSurah
             )
           }
-          role="button"
         >
           {context.lastRead.ayah == data.number.inSurah ? (
             <MapPinIconSolid className="h-6 w-6" title="Terakhir dibaca" />
@@ -108,7 +107,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
               style={{ filter: "opacity(0.3)" }}
             />
           )}
-        </div>
+        </button>
         <div className="arabic">{data.text.arab}</div>
       </div>
       <div className="translate">{data.translation.id}</div>

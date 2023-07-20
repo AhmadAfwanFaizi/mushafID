@@ -60,16 +60,13 @@ const Navbar = () => {
     switch (pathParam) {
       case "surah":
         return (
-          <Link
-            to={"#"}
+          <button
             className="btn btn-ghost"
             title="Cari"
-            onClick={() =>
-              context.showModal("Hello", "Fitur masih belum tersedia...")
-            }
+            onClick={() => window.modalSearchAyah.showModal()}
           >
             <MagnifyingGlassIcon className="h-7 w-7" />
-          </Link>
+          </button>
         );
         break;
 
