@@ -126,7 +126,7 @@ const Surah = () => {
                       surahName={surah.name}
                       data={verse}
                       surahId={surahId}
-                      bookmark={context.checkBookmark(
+                      checkBookmark={context.checkBookmark(
                         `${surahId}:${verse.number.inSurah}`
                       )}
                     />

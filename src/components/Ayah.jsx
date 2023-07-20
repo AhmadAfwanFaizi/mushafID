@@ -13,7 +13,13 @@ import {
   MapPinIcon as MapPinIconSolid,
 } from "@heroicons/react/24/solid";
 
-const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
+const Ayah = ({
+  surahName,
+  data,
+  surahId,
+  bookmarkPage = false,
+  checkBookmark,
+}) => {
   const context = useContext(RootContext);
 
   // ? kenapa menggunakan context untuk menyimpan data sementara
@@ -41,6 +47,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
     context.handleLastRead(namaSurah, surahId, ayah);
   };
 
+  console.log({ checkBookmark });
   return (
     <>
       <div className="media flex justify-between items-center h-10 bg-slate-100 rounded-full">
@@ -64,7 +71,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
             onEnded={() => handlePlayAudio(data.number.inSurah)}
           ></audio>
         </div>
-        {surah && (
+        {bookmarkPage && (
           <div className="media-center font-medium">
             {data.surah.name.transliteration.id}
           </div>
@@ -79,7 +86,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
             className="btn btn-ghost"
             onClick={() => handleBookmark(`${surahId}:${data.number.inSurah}`)}
           >
-            {bookmark ? (
+            {checkBookmark ? (
               <BookmarkIconSolid className="h-6 w-6" title="Batal simpan" />
             ) : (
               <BookmarkIcon className="h-6 w-6" title="Simpan" />

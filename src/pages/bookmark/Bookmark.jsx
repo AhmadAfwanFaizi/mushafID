@@ -55,8 +55,8 @@ const Bookmark = () => {
                       <Ayah
                         data={verse}
                         surahId={verse.surahId}
-                        surah={true}
-                        bookmark={context.checkBookmark(
+                        bookmarkPage={true}
+                        checkBookmark={context.checkBookmark(
                           `${verse.surahId}:${verse.number.inSurah}`
                         )}
                       />
