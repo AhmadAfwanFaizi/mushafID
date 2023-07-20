@@ -98,7 +98,7 @@ const Ayah = ({ surahName, data, surah = false, surahId, bookmark }) => {
             )
           }
         >
-          {context.lastRead.ayah == data.number.inSurah ? (
+          {context.lastRead && context.lastRead.ayah == data.number.inSurah ? (
             <MapPinIconSolid className="h-6 w-6" title="Terakhir dibaca" />
           ) : (
             <MapPinIcon
