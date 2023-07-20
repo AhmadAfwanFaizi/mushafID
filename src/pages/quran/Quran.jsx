@@ -45,7 +45,10 @@ const Quran = () => {
             onChange={handleSearch}
           />
           <span className="absolute inset-y-0 right-3 flex items-center pl-2">
-            <MagnifyingGlassIcon className="h-6 w-6" />
+            <MagnifyingGlassIcon
+              className="h-6 w-6"
+              style={{ filter: "opacity(0.3)" }}
+            />
           </span>
         </label>
       </div>
