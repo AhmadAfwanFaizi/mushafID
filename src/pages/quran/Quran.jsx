@@ -89,7 +89,7 @@ const Quran = () => {
                           {data.revelation.id} - {data.numberOfVerses}
                         </span>
                       </td>
-                      <td className="text-lg text-right arabic">
+                      <td className="text-xl text-right arabic">
                         {data.name.short}
                       </td>
                     </Link>

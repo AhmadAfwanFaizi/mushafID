@@ -104,8 +104,8 @@ const Ayah = ({
         </div>
       </div>
       {feature === "quran" ? (
-        <div className="ayah flex justify-end items-center text-right text-lg py-5">
-          <div className="arabic">{data.text.arab}</div>
+        <div className="ayah flex justify-end items-center text-right py-5">
+          <div className="arabic text-xl">{data.text.arab}</div>
           <button
             className="btn btn-ghost pin last-read"
             onClick={() =>
@@ -129,8 +129,8 @@ const Ayah = ({
           </button>
         </div>
       ) : feature === "memorize" ? (
-        <div className="ayah flex justify-end items-center text-right text-lg py-5">
-          <div className="arabic">{data.text.arab}</div>
+        <div className="ayah flex justify-end items-center text-right py-5">
+          <div className="arabic text-xl">{data.text.arab}</div>
           <button
             className="btn btn-ghost pin last-read"
             onClick={() => handleMemorize(`${surahId}:${data.number.inSurah}`)}
@@ -147,8 +147,8 @@ const Ayah = ({
           </button>
         </div>
       ) : (
-        <div className="ayah text-right text-lg py-5">
-          <div className="arabic">{data.text.arab}</div>
+        <div className="ayah text-right py-5">
+          <div className="arabic text-xl">{data.text.arab}</div>
         </div>
       )}
 

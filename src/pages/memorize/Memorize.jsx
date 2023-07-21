@@ -112,7 +112,7 @@ const Memorize = () => {
                           </span>
                         </td>
                         <td className="text-right ">
-                          <div className="text-lg  arabic">
+                          <div className="text-xl  arabic">
                             {data.name.short}
                           </div>
                           <div className="text-xs">
