@@ -33,7 +33,7 @@ const Quran = () => {
   return (
     <>
       <div
-        className="search py-4 fixed top-20 bg-romance z-10 flex justify-around shadow-md rounded-xl"
+        className="search py-4 fixed top-16 bg-romance z-10 flex justify-around shadow-md rounded-xl"
         style={{ width: "inherit" }}
       >
         <label htmlFor="search" className="relative block w-11/12">
@@ -68,7 +68,10 @@ const Quran = () => {
               <tbody>
                 {surah.map((data) => (
                   <tr key={data.number}>
-                    <Link to={`/surah/${data.number}`} className="contents">
+                    <Link
+                      to={`/quran/surah?surahId=${data.number}&feature=quran`}
+                      className="contents"
+                    >
                       <td className="w-[100px]">
                         <div
                           className="w-12 h-12 flex justify-center items-center"

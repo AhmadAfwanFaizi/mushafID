@@ -8,13 +8,22 @@ import {
   MapPinIcon,
   // ShareIcon,
   BookmarkIcon,
+  CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 import {
   BookmarkIcon as BookmarkIconSolid,
   MapPinIcon as MapPinIconSolid,
+  CheckCircleIcon as CheckCircleIconSolid,
 } from "@heroicons/react/24/solid";
 
-const Ayah = ({ surahName, data, surahId, bookmarkPage, checkBookmark }) => {
+const Ayah = ({
+  surahName,
+  data,
+  surahId,
+  feature,
+  checkBookmark,
+  checkMemorize,
+}) => {
   const context = useContext(RootContext);
 
   // ? kenapa menggunakan context untuk menyimpan data sementara
@@ -42,7 +51,10 @@ const Ayah = ({ surahName, data, surahId, bookmarkPage, checkBookmark }) => {
     context.handleLastRead(namaSurah, surahId, ayah);
   };
 
-  console.log({ checkBookmark });
+  const handleMemorize = (param) => {
+    context.handleMemorize(param);
+  };
+
   return (
     <>
       <div className="media flex justify-between items-center h-10 bg-slate-100 rounded-full">
@@ -66,10 +78,12 @@ const Ayah = ({ surahName, data, surahId, bookmarkPage, checkBookmark }) => {
             onEnded={() => handlePlayAudio(data.number.inSurah)}
           ></audio>
         </div>
-        {bookmarkPage && (
+        {feature === "bookmark" ? (
           <div className="media-center font-medium">
             {data.surah.name.transliteration.id}
           </div>
+        ) : (
+          ""
         )}
         <div className="media-right">
           {/* button share */}
@@ -89,44 +103,69 @@ const Ayah = ({ surahName, data, surahId, bookmarkPage, checkBookmark }) => {
           </button>
         </div>
       </div>
-      <div className="ayah flex justify-between items-center text-right text-lg py-5">
-        <button
-          className="btn btn-ghost pin last-read"
-          onClick={() =>
-            handleLastRead(
-              surahName.transliteration.id,
-              surahId,
-              data.number.inSurah
-            )
-          }
-        >
-          {context.lastRead && context.lastRead.ayah == data.number.inSurah ? (
-            <MapPinIconSolid className="h-6 w-6" title="Terakhir dibaca" />
-          ) : (
-            <MapPinIcon
-              className="h-6 w-6"
-              title="Terakhir dibaca"
-              style={{ filter: "opacity(0.3)" }}
-            />
-          )}
-        </button>
-        <div className="arabic">{data.text.arab}</div>
-      </div>
+      {feature === "quran" ? (
+        <div className="ayah flex justify-end items-center text-right text-lg py-5">
+          <div className="arabic">{data.text.arab}</div>
+          <button
+            className="btn btn-ghost pin last-read"
+            onClick={() =>
+              handleLastRead(
+                surahName.transliteration.id,
+                surahId,
+                data.number.inSurah
+              )
+            }
+          >
+            {context.lastRead &&
+            context.lastRead.ayah == data.number.inSurah ? (
+              <MapPinIconSolid className="h-6 w-6" title="Terakhir dibaca" />
+            ) : (
+              <MapPinIcon
+                className="h-6 w-6"
+                title="Terakhir dibaca"
+                style={{ filter: "opacity(0.3)" }}
+              />
+            )}
+          </button>
+        </div>
+      ) : feature === "memorize" ? (
+        <div className="ayah flex justify-end items-center text-right text-lg py-5">
+          <div className="arabic">{data.text.arab}</div>
+          <button
+            className="btn btn-ghost pin last-read"
+            onClick={() => handleMemorize(`${surahId}:${data.number.inSurah}`)}
+          >
+            {checkMemorize ? (
+              <CheckCircleIconSolid className="h-6 w-6" title="Dihafal" />
+            ) : (
+              <CheckCircleIcon
+                className="h-6 w-6"
+                title="Dihafal"
+                style={{ filter: "opacity(0.3)" }}
+              />
+            )}
+          </button>
+        </div>
+      ) : (
+        <div className="ayah text-right text-lg py-5">
+          <div className="arabic">{data.text.arab}</div>
+        </div>
+      )}
+
       <div className="translate">{data.translation.id}</div>
     </>
   );
 };
 
 Ayah.propTypes = {
-  surahName: PropTypes.object.isRequired,
+  surahName: PropTypes.object,
   data: PropTypes.object.isRequired,
   surahId: PropTypes.string.isRequired,
-  bookmarkPage: PropTypes.bool.isRequired,
-  checkBookmark: PropTypes.func.isRequired,
+  feature: PropTypes.string.isRequired,
+  checkBookmark: PropTypes.bool.isRequired,
+  checkMemorize: PropTypes.bool,
 };
 
-Ayah.defaultProps = {
-  bookmarkPage: false,
-};
+Ayah.defaultProps = {};
 
 export default Ayah;

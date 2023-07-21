@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import { RootContext } from "/src/context/Root";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import useQuranApi from "/src/hooks/useQuranApi.jsx";
 import Ayah from "/src/components/Ayah.jsx";
@@ -8,7 +8,9 @@ import Loading from "/src/components/Loading";
 
 const Surah = () => {
   const context = useContext(RootContext);
-  const { surahId = null } = useParams();
+  const [queryParams, setQueryParams] = useSearchParams();
+  const surahId = queryParams.get("surahId");
+  const feature = queryParams.get("feature");
   const surah = useQuranApi(surahId);
   const location = useLocation();
   const hash = location.hash;
@@ -98,15 +100,10 @@ const Surah = () => {
       ) : (
         <div className="card card-last_read w-ful bg-base-100 shadow-xl">
           <div className="card-body items-center p-4 text-slate-100">
-            <div className="card-title">
-              {surah.length != 0 && surah.name.transliteration.id}
-            </div>
-            <div className="text-md">
-              {surah.length != 0 && surah.name.translation.id}
-            </div>
+            <div className="card-title">{surah?.name.transliteration.id}</div>
+            <div className="text-md">{surah?.name.translation.id}</div>
             <p className="text-sm mt-2">
-              {surah.length != 0 && surah.revelation.id} -{" "}
-              {surah.length != 0 && surah.numberOfVerses}
+              {surah?.revelation.id} - {surah?.numberOfVerses}
             </p>
             <div className="card-actions justify-end"></div>
           </div>
@@ -126,7 +123,11 @@ const Surah = () => {
                       surahName={surah.name}
                       data={verse}
                       surahId={surahId}
+                      feature={feature}
                       checkBookmark={context.checkBookmark(
+                        `${surahId}:${verse.number.inSurah}`
+                      )}
+                      checkMemorize={context.checkMemorize(
                         `${surahId}:${verse.number.inSurah}`
                       )}
                     />

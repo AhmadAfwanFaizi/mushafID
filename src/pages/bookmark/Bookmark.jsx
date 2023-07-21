@@ -30,14 +30,13 @@ const Bookmark = () => {
   }, []);
 
   useEffect(() => {
-    storage &&
-      storage.map((data) => {
-        const split = data.split(":");
-        const surahId = split[0];
-        const numberAyah = split[1];
+    storage?.map((data) => {
+      const split = data.split(":");
+      const surahId = split[0];
+      const numberAyah = split[1];
 
-        getAyah(surahId, numberAyah);
-      });
+      getAyah(surahId, numberAyah);
+    });
   }, [storage]);
 
   return (
@@ -55,7 +54,7 @@ const Bookmark = () => {
                       <Ayah
                         data={verse}
                         surahId={verse.surahId}
-                        bookmarkPage={true}
+                        feature={"bookmark"}
                         checkBookmark={context.checkBookmark(
                           `${verse.surahId}:${verse.number.inSurah}`
                         )}

@@ -5,6 +5,7 @@ const RootProvider = ({ children }) => {
   const [bookmarks, setBookmarks] = useState([]);
   const [audio, setAudio] = useState("");
   const [lastRead, setLastRead] = useState({});
+  const [memorizes, setMemorizes] = useState([]);
 
   const checkBookmark = (param) => {
     const check = bookmarks
@@ -15,22 +16,23 @@ const RootProvider = ({ children }) => {
     return true;
   };
 
-  const insertStorage = (param) => {
+  const insertBookmark = (param) => {
     localStorage.setItem("quranAppBookmark", JSON.stringify(param));
     setBookmarks(param);
   };
+
   const handleBookmark = (dataInsert) => {
     if (!bookmarks) {
-      insertStorage([dataInsert]);
+      insertBookmark([dataInsert]);
     } else {
       if (checkBookmark(dataInsert) === true) {
         const newStorage = bookmarks.filter(
           (bookmark) => bookmark !== dataInsert
         );
-        insertStorage(newStorage);
+        insertBookmark(newStorage);
       } else {
         const newStorage = [...bookmarks, dataInsert];
-        insertStorage(newStorage);
+        insertBookmark(newStorage);
       }
     }
   };
@@ -41,12 +43,45 @@ const RootProvider = ({ children }) => {
     localStorage.setItem("quranAppLastRead", JSON.stringify(param));
   };
 
+  const checkMemorize = (param) => {
+    const check = memorizes
+      ? memorizes.find((memorize) => memorize === param)
+      : null;
+    if (!check) return false;
+
+    return true;
+  };
+
+  const insertMemorize = (param) => {
+    localStorage.setItem("quranAppMemorize", JSON.stringify(param));
+    setMemorizes(param);
+  };
+
+  const handleMemorize = (dataInsert) => {
+    if (!memorizes) {
+      insertMemorize([dataInsert]);
+    } else {
+      if (checkMemorize(dataInsert) === true) {
+        const newStorage = memorizes.filter(
+          (memorize) => memorize !== dataInsert
+        );
+        insertMemorize(newStorage);
+      } else {
+        const newStorage = [...memorizes, dataInsert];
+        insertMemorize(newStorage);
+      }
+    }
+  };
+
   useEffect(() => {
-    const bookmark = JSON.parse(localStorage.getItem("quranAppBookmark"));
-    setBookmarks(bookmark);
+    const bookmarks = JSON.parse(localStorage.getItem("quranAppBookmark"));
+    setBookmarks(bookmarks);
 
     const lastRead = JSON.parse(localStorage.getItem("quranAppLastRead"));
     setLastRead(lastRead);
+
+    const memorizes = JSON.parse(localStorage.getItem("quranAppMemorize"));
+    setMemorizes(memorizes);
   }, []);
 
   const [dataModal, setDataModal] = useState({
@@ -71,6 +106,9 @@ const RootProvider = ({ children }) => {
         handleBookmark,
         lastRead,
         handleLastRead,
+        memorizes,
+        checkMemorize,
+        handleMemorize,
         dataModal,
         showModal,
       }}

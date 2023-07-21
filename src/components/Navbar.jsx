@@ -12,10 +12,9 @@ const Navbar = () => {
   const location = useLocation();
   const path = location.pathname.split("/");
   const context = useContext(RootContext);
-
   const navLeft = (pathParam) => {
-    switch (pathParam) {
-      case "":
+    if (pathParam.length === 2) {
+      if (pathParam[1] === "") {
         return (
           <Link
             to="/"
@@ -31,9 +30,7 @@ const Navbar = () => {
             />
           </Link>
         );
-        break;
-
-      case "quran":
+      } else {
         return (
           <Link to="/" className="btn btn-ghost">
             <HomeIcon
@@ -43,52 +40,31 @@ const Navbar = () => {
             />
           </Link>
         );
-        break;
-      case "surah":
-        return (
-          <Link to="/quran" className="btn btn-ghost">
-            <ChevronLeftIcon
-              className="h-7 w-7"
-              title="Kembali"
-              strokeWidth="2"
-            />
-          </Link>
-        );
-        break;
-      case "bookmark":
-        return (
-          <Link to="/" className="btn btn-ghost">
-            <HomeIcon
-              className="h-7 w-7"
-              title="Halaman Utama"
-              strokeWidth="2"
-            />
-          </Link>
-        );
-        break;
-      default:
-        return "";
-        break;
+      }
+    } else if (path.length === 3) {
+      return (
+        <Link to={`/${path[1]}`} className="btn btn-ghost">
+          <ChevronLeftIcon
+            className="h-7 w-7"
+            title="Kembali"
+            strokeWidth="2"
+          />
+        </Link>
+      );
     }
   };
 
   const navRight = (pathParam) => {
-    switch (pathParam) {
-      case "surah":
-        return (
-          <button
-            className="btn btn-ghost"
-            title="Cari"
-            onClick={() => window.modalSearchAyah.showModal()}
-          >
-            <MagnifyingGlassIcon className="h-7 w-7" strokeWidth="2" />
-          </button>
-        );
-        break;
-
-      case "":
-        return "";
-        break;
+    if (pathParam.length === 3) {
+      return (
+        <button
+          className="btn btn-ghost"
+          title="Cari"
+          onClick={() => window.modalSearchAyah.showModal()}
+        >
+          <MagnifyingGlassIcon className="h-7 w-7" strokeWidth="2" />
+        </button>
+      );
     }
   };
 
@@ -98,7 +74,7 @@ const Navbar = () => {
       style={{ width: "inherit" }}
     >
       {/* left */}
-      <div className="left w-16">{navLeft(path[1])}</div>
+      <div className="left w-16">{navLeft(path)}</div>
 
       {/* center */}
       <div className="center m-auto">
@@ -106,7 +82,7 @@ const Navbar = () => {
       </div>
 
       {/* right */}
-      <div className="right w-16">{navRight(path[1])}</div>
+      <div className="right w-16">{navRight(path)}</div>
     </div>
   );
 };

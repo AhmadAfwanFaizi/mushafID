@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/Home";
 import Quran from "./pages/quran/Quran";
 import Surah from "./pages/surah/Surah";
+import Memorize from "./pages/memorize/Memorize";
 import Bookmark from "./pages/bookmark/Bookmark";
 import Modal from "./components/Modal";
 
@@ -20,11 +21,10 @@ function App() {
             <Navbar />
             <Routes>
               <Route index element={<Home />} />
-              <Route path="/quran" element={<Quran />} />
-              <Route path="/surah">
-                <Route path=":surahId" element={<Surah />} />
-                {/* <Route path=":surahId/:ayah" element={<Surah />} /> */}
-              </Route>
+              <Route path="/quran" element={<Quran />}></Route>
+              <Route path="/quran/surah" element={<Surah />} />
+              <Route path="/memorize" element={<Memorize />} />
+              <Route path="/memorize/surah" element={<Surah />} />
               <Route path="/bookmark" element={<Bookmark />} />
             </Routes>
           </div>

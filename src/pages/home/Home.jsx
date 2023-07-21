@@ -4,6 +4,14 @@ import { RootContext } from "/src/context/Root";
 import "./style.css";
 const Home = () => {
   const context = useContext(RootContext);
+  const memorizes = context.memorizes;
+  const handelPercentageMemorize = () => {
+    const totalMemorize = memorizes.length;
+    const totalAyah = 6236;
+    console.log({ totalMemorize, totalAyah });
+    const value = (parseInt(totalMemorize) / parseInt(totalAyah)) * 100;
+    return value.toFixed(0);
+  };
 
   return (
     <div className="px-6 py-2 grid grid-cols-2 gap-6 mt-28">
@@ -114,16 +122,16 @@ const Home = () => {
         <div className="card card-memorize w-ful bg-base-100 shadow-xl h-52 bg-dull-pink">
           <div className="card-body text-slate-100 justify-between">
             <div className="icon-menu icon-memorize h-24"></div>
-            <div>
+            <div className="flex flex-col">
               <h2 className="card-title">Hafalan</h2>
+              <progress
+                className="progress progress-success w-20"
+                value={handelPercentageMemorize()}
+                min="0"
+                max="100"
+              ></progress>
               <div className="card-actions justify-end"></div>
-              <a
-                href="#"
-                className="link link-hover flex"
-                onClick={() =>
-                  context.showModal("Hello", "Fitur masih belum tersedia...")
-                }
-              >
+              <Link to="/memorize" className="link link-hover flex">
                 Mulai
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +147,7 @@ const Home = () => {
                     d="M8.25 4.5l7.5 7.5-7.5 7.5"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
