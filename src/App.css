@@ -2,3 +2,8 @@
   color: #005052;
   background-color: #e0f0f5;
 }
+
+.bg-surah {
+  background-image: url("/src/assets/svg/ayah.svg");
+  background-size: cover;
+}

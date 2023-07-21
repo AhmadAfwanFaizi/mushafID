@@ -72,14 +72,8 @@ const Quran = () => {
                       to={`/quran/surah?surahId=${data.number}&feature=quran`}
                       className="contents"
                     >
-                      <td className="w-[100px]">
-                        <div
-                          className="w-12 h-12 flex justify-center items-center"
-                          style={{
-                            backgroundImage: `url('/src/assets/svg/ayah.svg')`,
-                            backgroundSize: "cover",
-                          }}
-                        >
+                      <td className="w-16">
+                        <div className="w-12 h-12 bg-surah flex justify-center items-center">
                           {data.number}
                         </div>
                       </td>
