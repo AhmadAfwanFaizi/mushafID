@@ -35,7 +35,7 @@ const Memorize = () => {
 
   const handlePercentage = (numberSurah, totalAyah) => {
     let memorizeCount = 0;
-    memorizes.map((memorize) => {
+    memorizes?.map((memorize) => {
       const memorizeSplit = memorize.split(":");
       if (numberSurah == memorizeSplit[0]) {
         memorizeCount += 1;

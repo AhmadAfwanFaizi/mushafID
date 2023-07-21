@@ -6,9 +6,8 @@ const Home = () => {
   const context = useContext(RootContext);
   const memorizes = context.memorizes;
   const handelPercentageMemorize = () => {
-    const totalMemorize = memorizes.length;
+    const totalMemorize = memorizes?.length;
     const totalAyah = 6236;
-    console.log({ totalMemorize, totalAyah });
     const value = (parseInt(totalMemorize) / parseInt(totalAyah)) * 100;
     return value.toFixed(0);
   };
