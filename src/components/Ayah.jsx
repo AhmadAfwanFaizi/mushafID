@@ -117,6 +117,7 @@ const Ayah = ({
             }
           >
             {context.lastRead &&
+            context.lastRead.surahId == surahId &&
             context.lastRead.ayah == data.number.inSurah ? (
               <MapPinIconSolid className="h-6 w-6" title="Terakhir dibaca" />
             ) : (
