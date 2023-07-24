@@ -8,6 +8,8 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
+import { HeartIcon } from "@heroicons/react/24/solid";
+
 const Navbar = () => {
   const location = useLocation();
   const path = location.pathname.split("/");
@@ -16,19 +18,27 @@ const Navbar = () => {
     if (pathParam.length === 2) {
       if (pathParam[1] === "") {
         return (
-          <Link
-            to="/"
-            className="btn btn-ghost"
-            onClick={() =>
-              context.showModal("Hello", "Fitur masih belum tersedia...")
-            }
-          >
+          // <Link
+          //   to="/"
+          //   className="btn btn-ghost"
+          //   onClick={() =>
+          //     context.showModal("Hello", "Fitur masih belum tersedia...")
+          //   }
+          // >
+          //   <Bars3Icon
+          //     className="h-7 w-7 font-semibold"
+          //     title="Pilihan"
+          //     strokeWidth="2"
+          //   />
+          // </Link>
+
+          <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
             <Bars3Icon
               className="h-7 w-7 font-semibold"
               title="Pilihan"
               strokeWidth="2"
             />
-          </Link>
+          </label>
         );
       } else {
         return (
@@ -74,7 +84,38 @@ const Navbar = () => {
       style={{ width: "inherit" }}
     >
       {/* left */}
-      <div className="left w-16">{navLeft(path)}</div>
+      <div className="left w-16">
+        {navLeft(path)}
+        <div className="drawer">
+          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-side">
+            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+            {/* <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+              <li>
+                <a>Sidebar Item 1</a>
+              </li>
+              <li>
+                <a>Sidebar Item 2</a>
+              </li>
+            </ul> */}
+            <div className="menu p-4 w-80 h-full bg-base-200 text-base-content justify-between">
+              <div className="menu"></div>
+              <div className="created flex">
+                <div className="social-media"></div>
+                Created with <HeartIcon className="h-5 w-5 mx-1" /> By&nbsp;
+                <a
+                  href="https://www.instagram.com/afwanfaizzz/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-dark-teal"
+                >
+                  Afwan Faiz
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* center */}
       <div className="center m-auto">
