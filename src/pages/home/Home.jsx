@@ -30,7 +30,7 @@ const Home = () => {
                 <div className="card-actions justify-end"></div>
                 {context.lastRead && (
                   <Link
-                    to={`/surah/${context.lastRead.surahId}#${context.lastRead.ayah}`}
+                    to={`/quran/surah?feature=quran&surahId=${context.lastRead.surahId}#${context.lastRead.ayah}`}
                     className="link link-hover flex"
                   >
                     Mulai
