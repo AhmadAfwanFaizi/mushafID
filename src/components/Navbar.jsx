@@ -102,7 +102,7 @@ const Navbar = () => {
               <div className="menu"></div>
               <div className="created flex">
                 <div className="social-media"></div>
-                Created with <HeartIcon className="h-5 w-5 mx-1" /> By&nbsp;
+                Made with <HeartIcon className="h-5 w-5 mx-1" /> By&nbsp;
                 <a
                   href="https://www.instagram.com/afwanfaizzz/"
                   target="_blank"
